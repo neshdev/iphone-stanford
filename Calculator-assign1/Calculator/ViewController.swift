@@ -13,25 +13,38 @@ class ViewController: UIViewController
     
     @IBOutlet weak var display: UILabel!
     
-    var userInTheMiddleOfTypingANumber = false;
+    var userInTheMiddleOfTypingANumber = false
+    var userTypingDecimalNumber = false
     
     @IBAction func appendDigit(sender: UIButton) {
-        let digit = sender.currentTitle!;
-        println("digit = \(digit)");
+        let digit = sender.currentTitle!
+        println("digit = \(digit)")
+        
+        if userTypingDecimalNumber && digit == "." {
+            return;
+        }
+        
+        if digit == "." {
+            userTypingDecimalNumber = true
+        }
+        
         if userInTheMiddleOfTypingANumber{
-            display.text = display.text! + digit;
+            display.text = display.text! + digit
         }else {
             display.text = digit;
             userInTheMiddleOfTypingANumber = true;
         }
-        
     }
     
     var operandStack = Array<Double>()
     
     @IBAction func enter() {
-        userInTheMiddleOfTypingANumber = false;
-        operandStack.append( displayValue );
+        userInTheMiddleOfTypingANumber = false
+        userTypingDecimalNumber = false;
+        operandStack.append( displayValue )
+        
+        displayHistory = displayHistory + " \(operandStack)"
+        
         println("operandStack= \(operandStack)")
     }
     
@@ -41,7 +54,8 @@ class ViewController: UIViewController
         }
         set {
             display.text = "\(newValue)"
-            userInTheMiddleOfTypingANumber = false;
+            userInTheMiddleOfTypingANumber = false
+            userTypingDecimalNumber = false;
         }
     }
     
@@ -61,6 +75,15 @@ class ViewController: UIViewController
         }
     }
     
+    @IBAction func constant(sender: UIButton) {
+        let constant = sender.currentTitle!
+        
+        switch constant {
+            case "π" : operandStack.append( M_PI );
+        default : break;
+        }
+        
+    }
     
     @IBAction func operate(sender: UIButton) {
         let operation = sender.currentTitle!
@@ -70,13 +93,36 @@ class ViewController: UIViewController
         }
         
         switch operation {
-            case "×" : perfromOperation { $0 * $1 }
-            case "÷" : perfromOperation { $1 / $0 }
-            case "+" : perfromOperation { $0 + $1 }
-            case "-" : perfromOperation { $1 - $0 }
-            case "√" : perfromOperation { sqrt($0) }
-            default : break
+        case "×" : perfromOperation { $0 * $1 }
+        case "÷" : perfromOperation { $1 / $0 }
+        case "+" : perfromOperation { $0 + $1 }
+        case "-" : perfromOperation { $1 - $0 }
+        case "√" : perfromOperation { sqrt($0) }
+        //case "π" : perfromOperation { $0 * M_PI }
+        case "sin" : perfromOperation { sin($0) }
+        case "cos" : perfromOperation { cos($0) }
+        default : break
         }
+    }
+    
+    @IBOutlet weak var history: UILabel!
+    
+    var displayHistory : String {
+        get {
+            return history.text!;
+        }
+        set {
+            history.text = newValue;
+        }
+    }
+    
+    @IBAction func clear() {
+        operandStack = Array<Double>()
+        userInTheMiddleOfTypingANumber = false;
+        userTypingDecimalNumber = false;
+        displayValue = 0;
+        displayHistory = "";
+        
     }
     
     

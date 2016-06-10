@@ -13,6 +13,8 @@
 		327FCB221D0107C100D679CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 327FCB201D0107C100D679CB /* LaunchScreen.storyboard */; };
 		327FCB2C1D010B3C00D679CB /* BreakoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327FCB2B1D010B3C00D679CB /* BreakoutViewController.swift */; };
 		327FCB2E1D010BD400D679CB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327FCB2D1D010BD400D679CB /* SettingsViewController.swift */; };
+		32ED2EB81D06735A008088D3 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ED2EB71D06735A008088D3 /* Ball.swift */; };
+		32ED2EBE1D08C1CD008088D3 /* Paddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ED2EBD1D08C1CD008088D3 /* Paddle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		327FCB231D0107C100D679CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		327FCB2B1D010B3C00D679CB /* BreakoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutViewController.swift; sourceTree = "<group>"; };
 		327FCB2D1D010BD400D679CB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		32ED2EB71D06735A008088D3 /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		32ED2EBD1D08C1CD008088D3 /* Paddle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Paddle.swift; path = Assets.xcassets/Paddle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +60,9 @@
 		327FCB161D0107C100D679CB /* assignment5 */ = {
 			isa = PBXGroup;
 			children = (
+				32ED2EBD1D08C1CD008088D3 /* Paddle.swift */,
 				327FCB2B1D010B3C00D679CB /* BreakoutViewController.swift */,
+				32ED2EB71D06735A008088D3 /* Ball.swift */,
 				327FCB171D0107C100D679CB /* AppDelegate.swift */,
 				327FCB1B1D0107C100D679CB /* Main.storyboard */,
 				327FCB1E1D0107C100D679CB /* Assets.xcassets */,
@@ -138,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32ED2EB81D06735A008088D3 /* Ball.swift in Sources */,
 				327FCB181D0107C100D679CB /* AppDelegate.swift in Sources */,
+				32ED2EBE1D08C1CD008088D3 /* Paddle.swift in Sources */,
 				327FCB2C1D010B3C00D679CB /* BreakoutViewController.swift in Sources */,
 				327FCB2E1D010BD400D679CB /* SettingsViewController.swift in Sources */,
 			);
@@ -292,6 +300,7 @@
 				327FCB281D0107C100D679CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

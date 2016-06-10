@@ -77,11 +77,8 @@
 		320011821CDDC36900F70EFF /* AutoLayout */ = {
 			isa = PBXGroup;
 			children = (
-				320011851CDDC36900F70EFF /* AppDelegate.swift */,
 				320011871CDDC36900F70EFF /* ViewController.swift */,
 				320011891CDDC36900F70EFF /* Main.storyboard */,
-				3200118C1CDDC36900F70EFF /* Images.xcassets */,
-				3200118E1CDDC36900F70EFF /* LaunchScreen.xib */,
 				320011831CDDC36900F70EFF /* Supporting Files */,
 			);
 			path = AutoLayout;
@@ -90,6 +87,9 @@
 		320011831CDDC36900F70EFF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3200118E1CDDC36900F70EFF /* LaunchScreen.xib */,
+				3200118C1CDDC36900F70EFF /* Images.xcassets */,
+				320011851CDDC36900F70EFF /* AppDelegate.swift */,
 				320011841CDDC36900F70EFF /* Info.plist */,
 			);
 			name = "Supporting Files";

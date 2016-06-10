@@ -25,7 +25,7 @@ private var twitterAccount: ACAccount?
 public class TwitterRequest
 {
     public let requestType: String
-    public let parameters = Dictionary<String, String>()
+    public var parameters = Dictionary<String, String>()
     
     // designated initializer
     public init(_ requestType: String, _ parameters: Dictionary<String, String> = [:]) {
@@ -90,7 +90,7 @@ public class TwitterRequest
     //   with the JSON results converted to a Property List
     
     public func fetch(handler: (results: PropertyList?) -> Void) {
-        performTwitterRequest(SLRequestMethod.GET, handler)
+        performTwitterRequest(SLRequestMethod.GET, handler: handler)
     }
     
     // generates a request for older Tweets than were returned by self
@@ -98,7 +98,7 @@ public class TwitterRequest
     // only makes sense for requests for Tweets
 
     public var requestForOlder: TwitterRequest? {
-        return min_id != nil ? modifiedRequest(parametersToChange: [TwitterKey.MaxID : min_id!]) : nil
+        return min_id != nil ? modifiedRequest([TwitterKey.MaxID : min_id!]) : nil
     }
     
     // generates a request for newer Tweets than were returned by self
@@ -106,7 +106,7 @@ public class TwitterRequest
     // only makes sense for requests for Tweets
 
     public var requestForNewer: TwitterRequest? {
-        return (max_id != nil) ? modifiedRequest(parametersToChange: [TwitterKey.SinceID : max_id!], clearCount: true) : nil
+        return (max_id != nil) ? modifiedRequest([TwitterKey.SinceID : max_id!], clearCount: true) : nil
     }
     
     // MARK: - Private Implementation
@@ -116,14 +116,14 @@ public class TwitterRequest
     // handler is not necessarily called on the main queue
     
     func performTwitterRequest(method: SLRequestMethod, handler: (PropertyList?) -> Void) {
-        var jsonExtension = (self.requestType.rangeOfString(JSONExtension) == nil) ? JSONExtension : ""
+        let jsonExtension = (self.requestType.rangeOfString(JSONExtension) == nil) ? JSONExtension : ""
         let request = SLRequest(
             forServiceType: SLServiceTypeTwitter,
             requestMethod: method,
             URL: NSURL(string: "\(TwitterURLPrefix)\(self.requestType)\(jsonExtension)"),
             parameters: self.parameters
         )
-        performTwitterRequest(request, handler)
+        performTwitterRequest(request, handler: handler)
     }
     
     // sends the request to Twitter
@@ -136,11 +136,9 @@ public class TwitterRequest
             request.performRequestWithHandler { (jsonResponse, httpResponse, _) in
                 var propertyListResponse: PropertyList?
                 if jsonResponse != nil {
-                    propertyListResponse = NSJSONSerialization.JSONObjectWithData(
+                    propertyListResponse = try? NSJSONSerialization.JSONObjectWithData(
                         jsonResponse,
-                        options: NSJSONReadingOptions.MutableLeaves,
-                        error: nil
-                    )
+                        options: NSJSONReadingOptions.MutableLeaves)
                     if propertyListResponse == nil {
                         let error = "Couldn't parse JSON response."
                         self.log(error)
@@ -183,7 +181,7 @@ public class TwitterRequest
     
     // modifies parameters in an existing request to create a new one
     
-    private func modifiedRequest(#parametersToChange: Dictionary<String,String>, clearCount: Bool = false) -> TwitterRequest {
+    private func modifiedRequest(parametersToChange: Dictionary<String,String>, clearCount: Bool = false) -> TwitterRequest {
         var newParameters = parameters
         for (key, value) in parametersToChange {
             newParameters[key] = value
@@ -214,7 +212,7 @@ public class TwitterRequest
     // debug println with identifying prefix
     
     private func log(whatToLog: AnyObject) {
-        debugPrintln("TwitterRequest: \(whatToLog)")
+        debugPrint("TwitterRequest: \(whatToLog)")
     }
     
     // synchronizes access to self across multiple threads

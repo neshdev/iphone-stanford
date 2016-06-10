@@ -12,6 +12,7 @@
 		327FCAFD1CFAD64400D679CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 327FCAFB1CFAD64300D679CB /* Main.storyboard */; };
 		327FCAFF1CFAD64400D679CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 327FCAFE1CFAD64400D679CB /* Assets.xcassets */; };
 		327FCB021CFAD64400D679CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 327FCB001CFAD64400D679CB /* LaunchScreen.storyboard */; };
+		327FCB0A1CFAD67A00D679CB /* BouncerBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327FCB091CFAD67A00D679CB /* BouncerBehavior.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		327FCAFE1CFAD64400D679CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		327FCB011CFAD64400D679CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		327FCB031CFAD64400D679CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		327FCB091CFAD67A00D679CB /* BouncerBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BouncerBehavior.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				327FCAF71CFAD64300D679CB /* AppDelegate.swift */,
 				327FCAF91CFAD64300D679CB /* ViewController.swift */,
+				327FCB091CFAD67A00D679CB /* BouncerBehavior.swift */,
 				327FCAFB1CFAD64300D679CB /* Main.storyboard */,
 				327FCAFE1CFAD64400D679CB /* Assets.xcassets */,
 				327FCB001CFAD64400D679CB /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				327FCAFA1CFAD64300D679CB /* ViewController.swift in Sources */,
 				327FCAF81CFAD64300D679CB /* AppDelegate.swift in Sources */,
+				327FCB0A1CFAD67A00D679CB /* BouncerBehavior.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
